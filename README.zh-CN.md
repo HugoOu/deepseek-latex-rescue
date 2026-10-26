@@ -4,6 +4,9 @@
 
 [English](README.md) · 简体中文
 
+[![Greasyfork](https://img.shields.io/badge/Greasyfork-%E5%AE%89%E8%A3%85-2f9e44)](https://greasyfork.org/zh-CN/scripts/602267)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 ## 为什么需要它
 
 DeepSeek 网页版偶尔会把一段块级公式原样打印成源码：
@@ -41,7 +44,7 @@ DeepSeek 网页版偶尔会把一段块级公式原样打印成源码：
 ## 安装
 
 1. 安装 [Tampermonkey](https://www.tampermonkey.net/)；
-2. 安装本脚本：Greasyfork（首个公开版本发布后补链接）或 [GitHub 原始文件](https://raw.githubusercontent.com/HugoOu/deepseek-latex-rescue/main/deepseek-latex-rescue.user.js)；
+2. 安装本脚本：[Greasyfork](https://greasyfork.org/zh-CN/scripts/602267)（一键安装、自动更新）或 [GitHub 原始文件](https://raw.githubusercontent.com/HugoOu/deepseek-latex-rescue/main/deepseek-latex-rescue.user.js)；
 3. 刷新任意 `chat.deepseek.com` 标签页（若仍用旧缓存，`Ctrl+F5`）。
 
 验证：`F12 → Console` 应出现

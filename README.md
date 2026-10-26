@@ -4,6 +4,9 @@
 
 English · [简体中文](README.zh-CN.md)
 
+[![Greasyfork](https://img.shields.io/badge/Greasyfork-install-2f9e44)](https://greasyfork.org/zh-CN/scripts/602267)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 ## Why
 
 DeepSeek's web chat occasionally prints a block formula as raw source instead of typesetting it:
@@ -41,7 +44,7 @@ It sends no request, reads no conversation data and changes no stored state.
 ## Install
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/).
-2. Install the script — Greasyfork (link added with the first public release) or [the raw GitHub file](https://raw.githubusercontent.com/HugoOu/deepseek-latex-rescue/main/deepseek-latex-rescue.user.js).
+2. Install the script — [Greasyfork](https://greasyfork.org/zh-CN/scripts/602267) (one click, auto-updates) or [the raw GitHub file](https://raw.githubusercontent.com/HugoOu/deepseek-latex-rescue/main/deepseek-latex-rescue.user.js).
 3. Reload any `chat.deepseek.com` tab (`Ctrl+F5` if the page keeps a cached copy).
 
 Verification: `F12 → Console` should show
