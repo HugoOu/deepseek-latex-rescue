@@ -1,0 +1,63 @@
+name: Bug report / 渲染问题
+description: Something is not repaired, or a paragraph was repaired by mistake.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        谢谢反馈。发之前请先在 `F12 → Console` 里执行一次 `__latexRescue.scan()`，把 `[latex-rescue]` 开头的日志一起贴上来——没有日志基本无法定位。
+  - type: input
+    id: script-version
+    attributes:
+      label: 脚本版本
+      description: Tampermonkey 面板里显示的版本号
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器与版本
+      placeholder: "Edge 156.0.4314.42 / Chrome 140"
+    validations:
+      required: true
+  - type: input
+    id: tampermonkey
+    attributes:
+      label: Tampermonkey 版本
+      placeholder: "5.5.1"
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 现象
+      description: 是「没修好」还是「误伤」？涉及哪类公式？
+    validations:
+      required: true
+  - type: textarea
+    id: console
+    attributes:
+      label: 控制台日志
+      description: 打开「切换调试日志」后刷新页面，复制 `[latex-rescue]` 开头的全部输出
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 出问题的公式原文
+      description: 从被修坏/未修复的段落里复制 LaTeX 源码
+      render: latex
+  - type: textarea
+    id: dom
+    attributes:
+      label: 相关 DOM（可选）
+      description: 在出问题的段落上右键 → 检查 → 复制 outerHTML
+      render: html
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 截图（可选）
+      description: 直接拖进来即可；请自行打码聊天内容

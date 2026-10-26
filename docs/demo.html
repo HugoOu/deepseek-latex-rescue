@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek LaTeX Rescue — before / after</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; padding: 48px 24px 96px;
+    font: 16px/1.75 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    color: #1f2328; background: #fff;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  p.lead { color: #666; margin: 0 0 40px; }
+  section { margin: 0 0 40px; }
+  h2 { font-size: 15px; letter-spacing: .02em; color: #555; margin: 0 0 12px; font-weight: 600; }
+  .card { border: 1px solid #e6e8eb; border-radius: 12px; padding: 18px 22px; }
+  .broken { font-family: inherit; white-space: pre-wrap; word-break: break-word; color: #1f2328; }
+  .note { color: #8a8f98; font-size: 13px; margin: 10px 0 0; }
+  code { background: #f3f4f6; border-radius: 4px; padding: 1px 5px; font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>DeepSeek LaTeX Rescue</h1>
+  <p class="lead">同一个段落，修复前 / 修复后。本页仅用于演示，不包含任何真实对话内容。</p>
+
+  <section>
+    <h2>Before — 网页实际渲染结果</h2>
+    <div class="card">
+      <div class="broken"><span>\frac{\partial f_\alpha(x)}{\partial \alpha} = f_\alpha(x) \cdot \frac{\partial}{\partial \alpha} \big[\alpha t(x) - \psi(\alpha)\big] = f_\alpha(x) \big[t(x) - \psi'(\alpha)\big]</span><br><span>]</span></div>
+    </div>
+    <p class="note">源码被前端拆进若干 <code>&lt;span&gt;</code> 和 <code>&lt;br&gt;</code>，末尾残留一个孤立的 <code>]</code>；公式位置只剩一个空的 <code>.katex-display</code>，其 <code>&lt;annotation&gt;</code> 为空。</p>
+  </section>
+
+  <section>
+    <h2>After — 脚本修复后</h2>
+    <div class="card" id="fixed">
+      <p class="note">正在加载 KaTeX…（需要联网从 CDN 取脚本；如果一直停在这里，说明 CDN 不可达）</p>
+    </div>
+    <p class="note">脚本把这几个片段识别为一段公式，去掉残留定界符后交给 KaTeX 0.16.22（与站点同版本）重新排版。</p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script>
+  (function () {
+    var host = document.getElementById('fixed');
+    if (typeof katex === 'undefined') {
+      host.innerHTML = '<p class="note">KaTeX 未能从 CDN 加载，无法演示。</p>';
+      return;
+    }
+    var tex = '\\frac{\\partial f_\\alpha(x)}{\\partial \\alpha} = f_\\alpha(x) \\cdot ' +
+              '\\frac{\\partial}{\\partial \\alpha} \\big[\\alpha t(x) - \\psi(\\alpha)\\big] = ' +
+              'f_\\alpha(x) \\big[t(x) - \\psi\'(\\alpha)\\big]';
+    host.innerHTML = '';
+    try {
+      katex.render(tex, host, { displayMode: true, throwOnError: false, strict: false });
+    } catch (e) {
+      host.textContent = String(e && e.message || e);
+    }
+  })();
+</script>
+</body>
+</html>
